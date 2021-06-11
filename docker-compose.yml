@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+    - "49000:6379"
+    command: redis-server --requirepass redispassword
+
+  app:
+    build: .
+    restart: always
+    volumes:
+    - .:/code
+    ports:
+    - "8080:8000"
+    command: bash -c "./start.sh"
+    depends_on:
+    - redis
+    tty: true
