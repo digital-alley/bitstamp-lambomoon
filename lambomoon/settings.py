@@ -32,24 +32,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+INSTALLED_APPS = []
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+MIDDLEWARE = []
 
 ROOT_URLCONF = 'lambomoon.urls'
 
@@ -69,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'lambomoon.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -79,6 +64,17 @@ REDIS = {
     'host': os.environ.get('REDIS_HOST') if os.environ.get('REDIS_HOST') is not None else 'redis',
     'port': os.environ.get('REDIS_PORT') if os.environ.get('REDIS_PORT') is not None else 6379,
     'password': os.environ.get('REDIS_PASSWORD') if os.environ.get('REDIS_PASSWORD') is not None else 'redispassword',
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "lambomoon"
+    }
 }
 
 
