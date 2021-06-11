@@ -32,7 +32,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = []
+INSTALLED_APPS = [
+    'lambomoon'
+]
 
 MIDDLEWARE = []
 
@@ -120,3 +122,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# Properties for identification for Bitstamp API
+API_KEY = 'api_key'
+API_SECRET = 'api_secret'
+CLIENT_ID = 'client_id'
